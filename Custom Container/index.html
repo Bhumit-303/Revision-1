@@ -22,16 +22,16 @@
             margin: 10px;
         }
 
-        div.red-border {
-            border: 2px solid red;
-            padding: 25px;
-            margin: 25px;
-        }
-
         div.green-border {
             border: 2px solid green;
-            padding: 25px;
-            margin: 25px;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        div.red-border {
+            border: 2px solid red;
+            padding: 10px;
+            margin: 10px;
         }
     </style>
 </head>
@@ -44,7 +44,7 @@
         // User component
         function User({ name, age, email }) {
             return (
-                <div>
+                <div className="blue-border">
                     <h2>User Information:</h2>
                     <p>Name: {name}</p>
                     <p>Age: {age}</p>
@@ -56,18 +56,9 @@
         // ScoreCard component
         function ScoreCard({ score }) {
             return (
-                <div>
+                <div className="green-border">
                     <h2>Score Card:</h2>
                     <p>Score: {score}</p>
-                </div>
-            );
-        }
-
-        // ContainerWithBlueBorder component
-        function ContainerWithBlueBorder({ children }) {
-            return (
-                <div className="blue-border">
-                    {children}
                 </div>
             );
         }
@@ -75,9 +66,9 @@
         // Container component (Bonus)
         function Container({ children, borderColor }) {
             const containerStyle = {
-                border: `1px solid ${borderColor}`,
-                padding: '25px',
-                margin: '25px',
+                border: `2px solid ${borderColor}`,
+                padding: '10px',
+                margin: '10px',
             };
 
             return <div style={containerStyle}>{children}</div>;
@@ -87,22 +78,14 @@
         function App() {
             return (
                 <div>
-                    <ContainerWithBlueBorder>
-                        <User name="John Doe" age={25} email="john@example.com" />
-                    </ContainerWithBlueBorder>
-                    <ContainerWithBlueBorder>
-                        <ScoreCard score={90} />
-                    </ContainerWithBlueBorder>
-
-                    {/* Bonus Task */}
-                    <Container borderColor="red">
-                        <User name="Alice" age={30} email="alice@example.com" />
+                    <Container borderColor="blue">
+                        <User name="Bhumit Jain" age={20} email="batmanFromRajasthan@gmail.com" />
                     </Container>
                     <Container borderColor="green">
-                        <ScoreCard score={85} />
+                        <ScoreCard score={90} />
                     </Container>
-                    <Container borderColor="blue">
-                        <p>This is a simple paragraph inside a blue container.</p>
+                    <Container borderColor="red">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Impedit, porro eos. Alias aut natus illo quia quis cumque, reiciendis qui velit, labore autem molestiae? Enim ab sit eveniet natus itaque.</p>
                     </Container>
                 </div>
             );
