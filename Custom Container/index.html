@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React Assignment</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+        }
+
+        div {
+            margin-bottom: 20px;
+        }
+
+        div.blue-border {
+            border: 2px solid blue;
+            padding: 10px;
+            margin: 10px;
+        }
+
+        div.red-border {
+            border: 2px solid red;
+            padding: 25px;
+            margin: 25px;
+        }
+
+        div.green-border {
+            border: 2px solid green;
+            padding: 25px;
+            margin: 25px;
+        }
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script src="https://www.unpkg.com/react@18.2.0/umd/react.development.js"></script>
+    <script src="https://www.unpkg.com/react-dom@18.2.0/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        // User component
+        function User({ name, age, email }) {
+            return (
+                <div>
+                    <h2>User Information:</h2>
+                    <p>Name: {name}</p>
+                    <p>Age: {age}</p>
+                    <p>Email: {email}</p>
+                </div>
+            );
+        }
+
+        // ScoreCard component
+        function ScoreCard({ score }) {
+            return (
+                <div>
+                    <h2>Score Card:</h2>
+                    <p>Score: {score}</p>
+                </div>
+            );
+        }
+
+        // ContainerWithBlueBorder component
+        function ContainerWithBlueBorder({ children }) {
+            return (
+                <div className="blue-border">
+                    {children}
+                </div>
+            );
+        }
+
+        // Container component (Bonus)
+        function Container({ children, borderColor }) {
+            const containerStyle = {
+                border: `1px solid ${borderColor}`,
+                padding: '25px',
+                margin: '25px',
+            };
+
+            return <div style={containerStyle}>{children}</div>;
+        }
+
+        // App component
+        function App() {
+            return (
+                <div>
+                    <ContainerWithBlueBorder>
+                        <User name="John Doe" age={25} email="john@example.com" />
+                    </ContainerWithBlueBorder>
+                    <ContainerWithBlueBorder>
+                        <ScoreCard score={90} />
+                    </ContainerWithBlueBorder>
+
+                    {/* Bonus Task */}
+                    <Container borderColor="red">
+                        <User name="Alice" age={30} email="alice@example.com" />
+                    </Container>
+                    <Container borderColor="green">
+                        <ScoreCard score={85} />
+                    </Container>
+                    <Container borderColor="blue">
+                        <p>This is a simple paragraph inside a blue container.</p>
+                    </Container>
+                </div>
+            );
+        }
+
+        ReactDOM.createRoot(document.getElementById("root")).render(<App />);
+    </script>
+</body>
+</html>
